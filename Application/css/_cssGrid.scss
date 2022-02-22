@@ -1,0 +1,22 @@
+$nb_columns: 12;
+$gutter_width: 0;
+$one-column-width: (100% - (($nb_columns + 1) * $gutter_width)) / $nb_columns;
+@mixin grid {
+    display: grid;
+    grid-template-columns: repeat($nb_columns, 1fr);
+    grid-gap: $gutter_width;
+}
+
+@mixin s($length, $offset) {
+    @media only screen and (max-width: 79rem) {
+        grid-column: span $length;
+        margin-left: ($offset * $one-column-width + ($offset + 1) * $gutter_width); 
+    }
+}
+
+@mixin l($length, $offset) {
+    @media only screen and (min-width: 80rem) {
+        grid-column: span $length;
+        margin-left: ($offset * ($one-column-width) + ($offset + 1) * $gutter_width);
+    }
+}

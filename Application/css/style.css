@@ -1,0 +1,19 @@
+#myDiagramDiv{
+    /*margin: auto;*/
+    width: 400px;
+    height: 220px;
+    /*background-color: #ddd;*/
+}
+
+.buttons{
+    font-size: 2.5em;
+}
+
+.controleur{
+    width: 400px;
+}
+
+.vision{
+    padding: 2%;
+    font-size: 1.5em;
+}

@@ -1,0 +1,69 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 0;
+  padding-left: 5px;
+}
+@media only screen and (min-width: 80rem) {
+  body {
+    grid-column: span 12;
+    margin-left: 0%;
+  }
+}
+@media only screen and (max-width: 79rem) {
+  body {
+    grid-column: span 12;
+    margin-left: 0%;
+  }
+}
+body > .settings {
+  height: 35em;
+  display: inline-block;
+}
+@media only screen and (min-width: 80rem) {
+  body > .settings {
+    grid-column: span 2;
+    margin-left: 0%;
+  }
+}
+@media only screen and (max-width: 79rem) {
+  body > .settings {
+    grid-column: span 4;
+    margin-left: 0%;
+  }
+}
+body > .settings .buttons {
+  justify-content: space-between;
+  font-size: 5.5em;
+}
+body > footer {
+  background-color: yellow;
+}
+@media only screen and (min-width: 80rem) {
+  body > footer {
+    grid-column: span 12;
+    margin-left: 0%;
+  }
+}
+@media only screen and (max-width: 79rem) {
+  body > footer {
+    grid-column: span 12;
+    margin-left: 0%;
+  }
+}
+body > #carte {
+  height: 35em;
+  background-color: blue;
+}
+@media only screen and (min-width: 80rem) {
+  body > #carte {
+    grid-column: span 8;
+    margin-left: 0%;
+  }
+}
+@media only screen and (max-width: 79rem) {
+  body > #carte {
+    grid-column: span 8;
+    margin-left: 0%;
+  }
+}/*# sourceMappingURL=G_cssGrid.css.map */
