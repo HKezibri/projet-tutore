@@ -72,11 +72,12 @@ function demo_start() {
     app.renderer.backgroundColor = 0x000000;
            
     if (! debug ){
-	
 	// Add food and a robot 
 	make_cherries(num_cherries, app.stage) ;
 	make_robot(app.stage);
 	make_obstacle(num_obstacles, app.stage);
+	
+
 
 	}
     else {
@@ -99,6 +100,7 @@ function demo_start() {
 		obstacles.push (obst );
 		app.stage.addChild( obst );
       
+
 		nono = new Robot(100,100,0);
 		app.stage.addChild( nono );
     
@@ -117,9 +119,11 @@ function demo_start() {
 function init_events() {
 	let start = document.querySelector("#start");
 	start.onclick = function () {
-		console.log(paused);
+		//console.log(paused);
 		if(!paused){
 			nono.set_nn_parameter(get_nn_parameter());
+			nono.set_sensor_range(get_vision());
+			
 
 			//app.ticker.start();
 
@@ -160,6 +164,13 @@ function init_events() {
 		nono.set_nn_parameter(get_nn_parameter());
 		
 	})
+
+	//vision
+	/* document.getElementById('apply').addEventListener('click',() => {
+		let val = document.getElementById("vision").value;
+		nono.set_sensor_range(val)
+		console.log(nono.sensor_range);
+	}); */
 }
 
 function game_loop(delta) {
@@ -171,8 +182,8 @@ function game_loop(delta) {
 		tics++;
 
 
-		let currentTime = elapsed;
-		console.log(elapsed);
+		let currentTime = elapsed/4;
+		//console.log(elapsed);
 		let totalTime = 100;
 		let rate = currentTime / totalTime;
 		document.querySelector("#battery").style.width = rate * 400 + "px"
@@ -189,6 +200,7 @@ function game_loop(delta) {
 			// compute controller
 			motor = nono.nono_controller(sensors);
 			nono.move(motor[0], motor[1], dt);
+			//console.log(nono.sensor_range)
 
 
 		}

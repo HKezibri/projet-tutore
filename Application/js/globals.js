@@ -1,7 +1,7 @@
 const robot_speed = 1000;
 const act_rate    = 20;
 
-const sensor_range   = 150;
+//const sensor_range   = 150;
 const sensor_fov     = Math.PI/6;
 const sensor_angles  = [ -Math.PI/8, Math.PI/8];
 
@@ -26,4 +26,5 @@ let battery   = 100;
 
 
 const debug = false; // fix the number of cherries to 1
+
 

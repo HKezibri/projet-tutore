@@ -68,6 +68,8 @@ class Robot extends PIXI.Container {
 		this.rotation = r;
 		this.param_go = get_nn_parameter();
 		//this.score = 0;
+		this.sensor_range = get_vision();
+
 
 		// The sensors
 
@@ -75,7 +77,7 @@ class Robot extends PIXI.Container {
 		this.sensor_values = [];
 		for (let i=0; i<sensor_angles.length; i++) {
 			let s = new Sensor(x, y, sensor_angles[i],
-					   sensor_range, sensor_fov);
+					   this.sensor_range, sensor_fov);
 			this.sensors.push(s);
 			this.sensor_values.push(0);
 			this.sensor_values.push(0);
@@ -101,7 +103,7 @@ class Robot extends PIXI.Container {
 		for (let i=0; i<num_obstacles; i++) {
 			let dist=Math.sqrt((obstacles[i].x-this.x)**2 +
 				(obstacles[i].y-this.y)**2);
-			if (dist<sensor_range && dist != 0 ){
+			if (dist<this.sensor_range && dist != 0 ){
 				hits.push([obstacles[i], dist]);
 			}
 		}
@@ -110,7 +112,7 @@ class Robot extends PIXI.Container {
 		for (let i=0; i<num_cherries; i++) {
 			let dist=Math.sqrt((cherries[i].x-this.x)**2 +
 				(cherries[i].y-this.y)**2);
-			if (dist<sensor_range && dist != 0 ){
+			if (dist<this.sensor_range && dist != 0 ){
 				hits.push([cherries[i], dist]);
 			}
 		}
@@ -261,6 +263,12 @@ class Robot extends PIXI.Container {
 		this.nn_parametres = param;
 		//console.log(param)
 	}
+	
+ 	set_sensor_range(sensor_val){
+		this.sensor_range = sensor_val;
+		//console.log(this.sensor_range);
+	}
+	
 
 
 
